@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+</head>
+<body class="bg">
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="post">
+        <div class="post-image">
+            <img src="{{post.image.url}}" alt="" width="400" height="400">
+        </div>
+        <div class="post-content">
+            <div class="post-header">
+                <h1>{{post.title}}</h1>
+                <div class="post-meta">
+                    <time datetime="2019-04-01">{{post.rate}}</time>
+                    <span class="author">{{post.created_date}}</span>
+                    <span class="category">{{post.modified_date}}</span>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-outline-info">
+                        <a href="/posts/" style="text-decoration: none; color: blue">На список постов</a>
+                    </button>
+                    <button type="button" class="btn btn-outline-info">
+                        <a href="/post/{{post.id}}/delete/"
+                           style="text-decoration: none; color: blue">Удалить</a>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-info">
+                        <a href="/post/{{post.id}}/update/"
+                           style="text-decoration: none; color: blue">Редактировать</a>
+                    </button>
+                </div>
+            </div>
+            <p>
+            </p>
+            <center>
+                <table border="4">
+                    <tr>
+                        <td>Текст</td> &nbsp;
+                        <td>Звезды</td> &nbsp;<td>Дата создания</td>&nbsp;<td>Дата изменения</td>
+                    </tr>
+                    {% for j in post.comment.all %}
+                    <tr>
+                        <td>{{j.text}}</td>
+                        <td>{{j.rate}}</td>
+                        <td>{{j.created_date}}</td>
+                        <td>{{j.modified_date}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </center>
+        </div>
+    </div>
+</div>
+<center>
+    <table border="5">
+        <tr>
+            <td>
+                <iframe src="{{post.url}}" width="610" height="350"></iframe>
+            </td>
+        </tr>
+
+    </table>
+
+</center>
+{% include 'footer.html' %}
+</body>
+</html>
+

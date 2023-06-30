@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Post</title>
+</head>
+<body>
+<center>
+    <h1>Добавить новый Пост</h1>
+    <form action="/post_create/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Добавить пост">
+</form>
+</center>
+</body>
+</html>

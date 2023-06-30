@@ -1,0 +1,29 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phones</title>
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+</head>
+<body>
+{% include 'header.html' %}
+<center>
+    <br>
+    <h1 class="color_white">Список товаров</h1><br>
+    {% for i in object_list %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{i.image.url}}" class="card-img-top" alt="100" width="300" height="300">
+        <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <p class="card-text">{{i.cost}}</p>
+            <a href="/phones/{{ i.id }}" class="btn btn-primary">Подробнее</a>
+            <a href="/phones/{{i.id}}/feedback/" class="btn btn-primary"> Оставить отзыв </a>
+        </div>
+    </div>
+    <br><br><br>
+    {% endfor %}
+{% include 'footer.html'%}
+</center>
+</body>
+</html>
